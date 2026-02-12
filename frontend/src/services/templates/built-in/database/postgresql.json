@@ -1,0 +1,103 @@
+{
+  "id": "template-database-postgres",
+  "name": "PostgreSQL Database",
+  "category": "database",
+  "template": {
+    "name": "PostgreSQL Database",
+    "description": "Cylinder-style database with stacked layers",
+    "data": {
+      "label": "PostgreSQL"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  display: flex;\n  align-items: center;\n  padding: 16px 20px;\n  width: {{ width or 200 }}px;\n  border-radius: {{ borderRadius or 16 }}px;\n  background: linear-gradient(135deg, {{ bgStart or '#1e3a8a' }} 0%, {{ bgEnd or '#3b82f6' }} 100%);\n  border: {{ borderWidth or 3 }}px solid {{ borderColor or '#60a5fa' }};\n  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);\n  overflow: hidden;\n\">\n  <!-- Cylinder effect on left -->\n  <div style=\"\n    position: absolute;\n    left: -10px;\n    top: 0;\n    width: 60px;\n    height: 100%;\n    background: repeating-linear-gradient(\n      0deg,\n      rgba(255,255,255,0.1) 0px,\n      rgba(255,255,255,0.1) 8px,\n      transparent 8px,\n      transparent 16px\n    );\n    border-radius: 12px;\n  \"></div>\n\n  <div style=\"\n    position: relative;\n    z-index: 1;\n    margin-right: 16px;\n    font-size: {{ iconSize or 42 }}px;\n    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));\n  \">\n    {{ icon or '🗄️' }}\n  </div>\n\n  <div style=\"position: relative; z-index: 1; flex: 1;\">\n    <div style=\"\n      font-weight: 700;\n      font-size: {{ labelSize or 16 }}px;\n      color: {{ labelColor or '#ffffff' }};\n      margin-bottom: 4px;\n      text-shadow: 0 1px 2px rgba(0,0,0,0.2);\n    \">\n      {{ label }}\n    </div>\n    {% if subtitle %}\n    <div style=\"\n      font-size: {{ subtitleSize or 11 }}px;\n      color: {{ subtitleColor or '#dbeafe' }};\n      font-weight: 500;\n      text-transform: uppercase;\n      letter-spacing: 0.05em;\n    \">\n      {{ subtitle }}\n    </div>\n    {% endif %}\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "description": "Database name",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtitle",
+        "type": "text",
+        "description": "Type description"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "min": 120,
+        "max": 250
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 24
+      },
+      {
+        "name": "subtitleColor",
+        "label": "Subtitle Color",
+        "type": "color"
+      },
+      {
+        "name": "subtitleSize",
+        "label": "Subtitle Size",
+        "type": "number",
+        "min": 8,
+        "max": 18
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "database",
+      "sql",
+      "relational",
+      "postgres"
+    ]
+  }
+}

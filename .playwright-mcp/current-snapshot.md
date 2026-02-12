@@ -1,0 +1,148 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e8]:
+        - link "Canvas Demo" [ref=e9] [cursor=pointer]:
+          - /url: /demo
+      - listitem [ref=e10]:
+        - link "System Status" [ref=e11] [cursor=pointer]:
+          - /url: /status
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Diagram Canvas Demo" [level=1] [ref=e15]
+        - paragraph [ref=e16]: Drag nodes from the toolbar, connect them, and explore!
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]:
+            - heading "Node Templates" [level=3] [ref=e20]
+            - generic [ref=e21]:
+              - img [ref=e22]
+              - textbox "Search templates..." [ref=e25]
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - generic [ref=e28] [cursor=pointer]:
+                - generic [ref=e29]: C4 Model
+                - img [ref=e31]
+              - generic [ref=e33]:
+                - generic [ref=e34]:
+                  - generic [ref=e35]: 👤
+                  - generic [ref=e36]:
+                    - generic [ref=e37]: Person
+                    - generic [ref=e38]: Represents a person or user
+                - generic [ref=e39]:
+                  - generic [ref=e40]: 🖥️
+                  - generic [ref=e41]:
+                    - generic [ref=e42]: System
+                    - generic [ref=e43]: Represents a software system
+                - generic [ref=e44]:
+                  - generic [ref=e45]: 📦
+                  - generic [ref=e46]:
+                    - generic [ref=e47]: Container
+                    - generic [ref=e48]: Represents a container (application, data store, etc.)
+            - generic [ref=e49]:
+              - generic [ref=e50] [cursor=pointer]:
+                - generic [ref=e51]: Common
+                - img [ref=e53]
+              - generic [ref=e55]:
+                - generic [ref=e56]:
+                  - generic [ref=e57]: ⚙️
+                  - generic [ref=e58]:
+                    - generic [ref=e59]: Service
+                    - generic [ref=e60]: Represents a microservice or service
+                - generic [ref=e61]:
+                  - generic [ref=e62]: 🗄️
+                  - generic [ref=e63]:
+                    - generic [ref=e64]: Database
+                    - generic [ref=e65]: Represents a database or data store
+                - generic [ref=e66]:
+                  - generic [ref=e67]: 🔌
+                  - generic [ref=e68]:
+                    - generic [ref=e69]: API
+                    - generic [ref=e70]: Represents an API endpoint
+            - generic [ref=e71]:
+              - generic [ref=e72] [cursor=pointer]:
+                - generic [ref=e73]: Infrastructure
+                - img [ref=e75]
+              - generic [ref=e77]:
+                - generic [ref=e78]:
+                  - generic [ref=e79]: ⚖️
+                  - generic [ref=e80]:
+                    - generic [ref=e81]: Load Balancer
+                    - generic [ref=e82]: Represents a load balancer
+                - generic [ref=e83]:
+                  - generic [ref=e84]: ⚡
+                  - generic [ref=e85]:
+                    - generic [ref=e86]: Cache
+                    - generic [ref=e87]: Represents a cache layer
+                - generic [ref=e88]:
+                  - generic [ref=e89]: 📬
+                  - generic [ref=e90]:
+                    - generic [ref=e91]: Message Queue
+                    - generic [ref=e92]: Represents a message queue
+        - generic [ref=e93]:
+          - generic [ref=e95] [cursor=pointer]:
+            - generic:
+              - img:
+                - generic:
+                  - button "Edge from user-1 to webapp-1" [ref=e96]
+                  - button "Edge from webapp-1 to api-1" [ref=e99]
+                  - button "Edge from api-1 to database-1" [ref=e102]
+              - generic:
+                - generic [ref=e105]: HTTPS
+                - generic [ref=e106]: REST API
+                - generic [ref=e107]: SQL API
+              - generic:
+                - button "👤 👤 User End user of the system" [ref=e108]:
+                  - generic [ref=e109]:
+                    - generic [ref=e111]: 👤
+                    - generic [ref=e113]:
+                      - generic [ref=e114]: 👤
+                      - generic [ref=e115]: User
+                    - generic [ref=e116]: End user of the system
+                - button "🌐 🌐 Web Application React SPA React-based web application" [ref=e120]:
+                  - generic [ref=e121]:
+                    - generic [ref=e123]: 🌐
+                    - generic [ref=e125]:
+                      - generic [ref=e126]: 🌐
+                      - generic [ref=e127]: Web Application
+                      - generic [ref=e128]: React SPA
+                    - generic [ref=e129]: React-based web application
+                - button "⚙️ ⚙️ API Service Azure Functions RESTful API backend" [ref=e133]:
+                  - generic [ref=e134]:
+                    - generic [ref=e136]: ⚙️
+                    - generic [ref=e138]:
+                      - generic [ref=e139]: ⚙️
+                      - generic [ref=e140]: API Service
+                      - generic [ref=e141]: Azure Functions
+                    - generic [ref=e142]: RESTful API backend
+                - button "🗄️ 🗄️ Cosmos DB NoSQL Database Cosmos DB database" [ref=e146]:
+                  - generic [ref=e147]:
+                    - generic [ref=e149]: 🗄️
+                    - generic [ref=e151]:
+                      - generic [ref=e152]: 🗄️
+                      - generic [ref=e153]: Cosmos DB
+                      - generic [ref=e154]: NoSQL Database
+                    - generic [ref=e155]: Cosmos DB database
+          - img [ref=e159]
+          - generic [ref=e161]:
+            - button "zoom in" [ref=e162] [cursor=pointer]:
+              - img [ref=e163]
+            - button "zoom out" [ref=e165] [cursor=pointer]:
+              - img [ref=e166]
+            - button "fit view" [ref=e168] [cursor=pointer]:
+              - img [ref=e169]
+            - button "toggle interactivity" [ref=e171] [cursor=pointer]:
+              - img [ref=e172]
+          - img "React Flow mini map" [ref=e175]
+          - link "React Flow attribution" [ref=e181] [cursor=pointer]:
+            - /url: https://reactflow.dev
+            - text: React Flow
+        - generic [ref=e183]:
+          - button "Zoom In" [ref=e184] [cursor=pointer]
+          - button "Zoom Out" [ref=e187] [cursor=pointer]
+          - button "Fit View" [ref=e190] [cursor=pointer]
+          - button "Export as PNG" [ref=e195] [cursor=pointer]

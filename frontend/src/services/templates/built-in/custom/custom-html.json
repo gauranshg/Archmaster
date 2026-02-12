@@ -1,0 +1,141 @@
+{
+  "id": "template-custom-html",
+  "name": "Custom HTML",
+  "category": "custom",
+  "template": {
+    "name": "Custom HTML",
+    "description": "Full creative control with custom HTML, CSS, and styling",
+    "data": {
+      "label": "Custom HTML"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  width: {{ width or 180 }}px;\n  min-height: {{ minHeight or 100 }}px;\n  background: {{ backgroundColor or '#1f2937' }};\n  border-radius: {{ borderRadius or 12 }}px;\n  border: {{ borderWidth or 2 }}px solid {{ borderColor or '#8b5cf6' }};\n  overflow: hidden;\n\">\n  <!-- Header -->\n  <div style=\"\n    background: linear-gradient(135deg, {{ headerStart or '#8b5cf6' }} 0%, {{ headerEnd or '#7c3aed' }} 100%);\n    padding: 12px;\n    text-align: center;\n  \">\n    <div style=\"font-size: {{ iconSize or 28 }}px; margin-bottom: 4px;\">\n      {{ icon or '🎨' }}\n    </div>\n    <div style=\"\n      font-weight: 700;\n      font-size: {{ labelSize or 16 }}px;\n      color: {{ labelColor or '#ffffff' }};\n    \">\n      {{ label }}\n    </div>\n  </div>\n\n  <!-- Body -->\n  <div style=\"padding: 12px;\">\n    <div style=\"\n      font-size: {{ bodySize or 12 }}px;\n      color: {{ bodyColor or '#d1d5db' }};\n      line-height: 1.5;\n      text-align: center;\n    \">\n      Edit HTML in Properties<br/>\n      for full control!\n    </div>\n\n    <!-- Code decoration -->\n    <div style=\"\n      margin-top: 8px;\n      padding: 6px;\n      background: {{ codeBg or '#111827' }};\n      border-radius: 6px;\n      font-family: monospace;\n      font-size: 10px;\n      color: {{ codeColor or '#a78bfa' }};\n      text-align: center;\n    \">\n      &lt;div&gt;Your HTML&lt;/div&gt;\n    </div>\n  </div>\n\n  <!-- Status bar -->\n  <div style=\"\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    padding: 6px 12px;\n    background: {{ footerBg or '#111827' }};\n    border-top: 1px solid {{ borderColor or '#8b5cf6' }};\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  \">\n    <span style=\"\n      font-size: 9px;\n      color: {{ footerText or '#9ca3af' }};\n      text-transform: uppercase;\n      letter-spacing: 0.1em;\n    \">Custom HTML</span>\n    <div style=\"\n      width: 8px;\n      height: 8px;\n      background: {{ indicatorColor or '#8b5cf6' }};\n      border-radius: 50%;\n      box-shadow: 0 0 8px {{ indicatorColor or '#8b5cf6' }};\n    \"></div>\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "description": "Node label",
+        "required": true
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon",
+        "description": "Emoji or icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "description": "Node width in pixels",
+        "min": 100,
+        "max": 400
+      },
+      {
+        "name": "minHeight",
+        "label": "Min Height",
+        "type": "number",
+        "min": 50,
+        "max": 500
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 0,
+        "max": 30
+      },
+      {
+        "name": "headerStart",
+        "label": "Header Start Color",
+        "type": "color"
+      },
+      {
+        "name": "headerEnd",
+        "label": "Header End Color",
+        "type": "color"
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 16,
+        "max": 64
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 32
+      },
+      {
+        "name": "bodySize",
+        "label": "Body Font Size",
+        "type": "number",
+        "min": 8,
+        "max": 24
+      },
+      {
+        "name": "bodyColor",
+        "label": "Body Text Color",
+        "type": "color"
+      },
+      {
+        "name": "codeBg",
+        "label": "Code Block Background",
+        "type": "color"
+      },
+      {
+        "name": "codeColor",
+        "label": "Code Block Text",
+        "type": "color"
+      },
+      {
+        "name": "footerBg",
+        "label": "Footer Background",
+        "type": "color"
+      },
+      {
+        "name": "footerText",
+        "label": "Footer Text Color",
+        "type": "color"
+      },
+      {
+        "name": "indicatorColor",
+        "label": "Indicator Color",
+        "type": "color"
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "custom",
+      "html",
+      "flexible",
+      "creative"
+    ]
+  }
+}

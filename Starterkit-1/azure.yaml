@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/azure.yaml.json
+
+name: azure-saas-starter-kit
+services:
+  api:
+    project: ./src/api
+    language: python
+    host: function
+    deploy:
+      strategy: none
+
+infra:
+  provider: bicep
+  path: infra/main.bicep
+  parameters:
+    environmentName:
+      type: string
+      default: "${AZURE_ENV_NAME}"
+      description: "The name of the environment. This is used as a prefix for all resources."
+    projectName:
+      type: string
+      default: "saas"
+      description: "The name of the project to use as a prefix for resources."
+    sqlAdminPassword:
+      type: string
+      description: "The administrator password for the SQL server."
+      secure: true
+      console:
+        minLength: 8

@@ -1,0 +1,21 @@
+{
+  "id": "template-container-webapp",
+  "name": "Web Application",
+  "category": "container",
+  "template": {
+    "name": "Web Application",
+    "description": "Browser window frame design",
+    "data": {
+      "label": "Web Application"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  width: {{ width or 200 }}px;\n  background: {{ backgroundColor or '#f0f9ff' }};\n  border-radius: {{ borderRadius or 12 }}px;\n  overflow: hidden;\n  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);\n\">\n  <!-- Browser chrome/header -->\n  <div style=\"\n    background: linear-gradient(180deg, {{ headerStart or '#0ea5e9' }} 0%, {{ headerEnd or '#0284c7' }} 100%);\n    padding: 10px 12px;\n    display: flex;\n    align-items: center;\n    gap: 8px;\n  \">\n    <!-- Window controls -->\n    <div style=\"display: flex; gap: 6px;\">\n      <div style=\"width: 10px; height: 10px; border-radius: 50%; background: #ef4444;\"></div>\n      <div style=\"width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;\"></div>\n      <div style=\"width: 10px; height: 10px; border-radius: 50%; background: #22c55e;\"></div>\n    </div>\n\n    <!-- Address bar -->\n    <div style=\"\n      flex: 1;\n      height: 18px;\n      background: {{ addressBarBg or '#ffffff' }};\n      border-radius: 4px;\n      display: flex;\n      align-items: center;\n      padding: 0 8px;\n      font-size: 9px;\n      color: {{ addressBarColor or '#64748b' }};\n      font-family: monospace;\n    \">\n      {{ addressBar or 'https://...' }}\n    </div>\n\n    <div style=\"font-size: {{ iconSize or 16 }}px;\">{{ icon or '🌍' }}</div>\n  </div>\n\n  <!-- Content area -->\n  <div style=\"padding: 14px; text-align: center;\">\n    <div style=\"\n      font-weight: 700;\n      font-size: {{ labelSize or 16 }}px;\n      color: {{ labelColor or '#0369a1' }};\n      margin-bottom: 4px;\n    \">{{ label }}</div>\n\n    {% if subtitle %}\n    <div style=\"\n      font-size: {{ subtitleSize or 11 }}px;\n      color: {{ subtitleColor or '#0ea5e9' }};\n      margin-bottom: 8px;\n    \">{{ subtitle }}</div>\n    {% endif %}\n\n    {% if technology %}\n    <div style=\"\n      display: inline-block;\n      font-size: {{ techSize or 10 }}px;\n      color: {{ techColor or '#0284c7' }};\n      background: {{ techBg or '#e0f2fe' }};\n      padding: 3px 10px;\n      border-radius: 12px;\n      font-weight: 600;\n    \">{{ technology }}</div>\n    {% endif %}\n  </div>\n</div>",
+    "variables": [],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "container",
+      "web",
+      "application"
+    ]
+  }
+}

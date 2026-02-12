@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">Tailwind CSS Test</h1>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Testing Basic Tailwind Classes</h2>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-blue-500 text-white p-4 rounded">Blue background</div>
+                <div class="bg-green-500 text-white p-4 rounded">Green background</div>
+                <div class="bg-red-500 text-white p-4 rounded">Red background</div>
+                <div class="bg-purple-500 text-white p-4 rounded">Purple background</div>
+            </div>
+
+            <div class="mt-4">
+                <p class="text-gray-700 mb-2">Text styles:</p>
+                <p class="font-bold text-lg">Bold text</p>
+                <p class="italic text-gray-600">Italic text</p>
+                <p class="underline text-blue-600">Underlined text</p>
+            </div>
+
+            <div class="mt-4">
+                <p class="text-gray-700 mb-2">Custom theme colors:</p>
+                <div class="flex gap-2">
+                    <div class="bg-primary-500 text-white px-3 py-1 rounded">Primary</div>
+                    <div class="bg-primary-600 text-white px-3 py-1 rounded">Primary 600</div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <p class="text-gray-700 mb-2">Spacing:</p>
+                <div class="flex gap-4">
+                    <div class="p-2 border">Padding 2</div>
+                    <div class="p-4 border">Padding 4</div>
+                    <div class="p-6 border">Padding 6</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Testing Custom Styles</h2>
+
+            <div class="btn btn-primary">Primary Button</div>
+            <div class="btn btn-secondary ml-2">Secondary Button</div>
+            <div class="btn btn-ghost ml-2">Ghost Button</div>
+
+            <div class="mt-4">
+                <input type="text" placeholder="Test input" class="input">
+            </div>
+
+            <div class="mt-4">
+                <div class="card p-4">Card with content</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

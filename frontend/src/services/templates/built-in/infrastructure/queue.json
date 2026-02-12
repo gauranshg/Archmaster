@@ -1,0 +1,22 @@
+{
+  "id": "template-queue",
+  "name": "Message Queue",
+  "category": "infrastructure",
+  "template": {
+    "name": "Message Queue",
+    "description": "Stacked message queue with depth visualization",
+    "data": {
+      "label": "Message Queue"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  width: {{ width or 160 }}px;\n  padding: 14px;\n  background: {{ backgroundColor or '#fff7ed' }};\n  border: {{ borderWidth or 2 }}px solid {{ borderColor or '#f97316' }};\n  border-radius: {{ borderRadius or 10 }}px;\n\">\n  <!-- Icon and label row -->\n  <div style=\"\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    margin-bottom: 12px;\n  \">\n    <div style=\"\n      font-size: {{ iconSize or 32 }}px;\n    \">{{ icon or '📬' }}</div>\n\n    <div style=\"flex: 1;\">\n      <div style=\"\n        font-weight: 700;\n        font-size: {{ labelSize or 15 }}px;\n        color: {{ labelColor or '#c2410c' }};\n      \">{{ label }}</div>\n      {% if subtitle %}\n      <div style=\"\n        font-size: {{ subtitleSize or 10 }}px;\n        color: {{ subtitleColor or '#ea580c' }};\n      \">{{ subtitle }}</div>\n      {% endif %}\n    </div>\n  </div>\n\n  <!-- Stacked messages visual -->\n  <div style=\"\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n  \">\n    <div style=\"\n      height: {{ messageHeight or 8 }}px;\n      background: {{ msgColor1 or '#fdba74' }};\n      border-radius: 4px;\n      width: 100%;\n    \"></div>\n    <div style=\"\n      height: {{ messageHeight or 8 }}px;\n      background: {{ msgColor2 or '#fb923c' }};\n      border-radius: 4px;\n      width: 90%;\n      margin-left: auto;\n    \"></div>\n    <div style=\"\n      height: {{ messageHeight or 8 }}px;\n      background: {{ msgColor3 or '#f97316' }};\n      border-radius: 4px;\n      width: 80%;\n      margin-left: auto;\n    \"></div>\n    <div style=\"\n      height: {{ messageHeight or 8 }}px;\n      background: {{ msgColor4 or '#ea580c' }};\n      border-radius: 4px;\n      width: 70%;\n      margin-left: auto;\n    \"></div>\n  </div>\n\n  {% if badge %}\n  <div style=\"\n    position: absolute;\n    top: -8px;\n    right: -8px;\n    background: {{ badgeBackground or '#f97316' }};\n    color: {{ badgeColor or '#ffffff' }};\n    font-size: {{ badgeSize or 9 }}px;\n    padding: 3px 8px;\n    border-radius: 10px;\n    font-weight: 700;\n    text-transform: uppercase;\n    letter-spacing: 0.05em;\n    box-shadow: 0 2px 4px rgba(0,0,0,0.2);\n  \">{{ badge }}</div>\n  {% endif %}\n</div>",
+    "variables": [],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "queue",
+      "messaging",
+      "async",
+      "events"
+    ]
+  }
+}

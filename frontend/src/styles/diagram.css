@@ -1,0 +1,77 @@
+/**
+ * Diagram Global Styles
+ *
+ * Global styles that apply to all diagrams and nodes.
+ * These styles are loaded automatically for all diagram views.
+ */
+
+/**
+ * Remove wrapper styling for nodes with custom HTML content
+ *
+ * When nodes use custom htmlContent or jinjaTemplate, they are wrapped
+ * in a container div for handles and positioning. These styles make that
+ * wrapper transparent so only the custom content is visible.
+ */
+.database-node[data-custom-html="true"],
+.c4-database-node[data-custom-html="true"],
+.c4-person-node[data-custom-html="true"],
+.c4-software-system-node[data-custom-html="true"],
+.c4-container-node[data-custom-html="true"],
+.c4-component-node[data-custom-html="true"],
+.c4-queue-node[data-custom-html="true"],
+.service-node[data-custom-html="true"],
+.custom-node[data-custom-html="true"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+/**
+ * Also handle selected state for custom HTML nodes
+ * Prevents blue border/shadow when selected
+ */
+.database-node[data-custom-html="true"].selected,
+.c4-database-node[data-custom-html="true"].selected,
+.c4-person-node[data-custom-html="true"].selected,
+.c4-software-system-node[data-custom-html="true"].selected,
+.c4-container-node[data-custom-html="true"].selected,
+.c4-component-node[data-custom-html="true"].selected,
+.c4-queue-node[data-custom-html="true"].selected,
+.service-node[data-custom-html="true"].selected,
+.custom-node[data-custom-html="true"].selected {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/**
+ * Ensure custom HTML content is still visible
+ * The inner content div maintains its own styling
+ */
+[data-custom-html="true"] .node-full-content {
+  width: 100%;
+  height: 100%;
+}
+
+/**
+ * Handle positioning remains functional for custom HTML nodes
+ * The handles (connection points) still work correctly
+ */
+[data-custom-html="true"] .custom-handle {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+[data-custom-html="true"]:hover .custom-handle {
+  opacity: 1;
+}
+
+/**
+ * Drill-down indicator remains visible
+ */
+[data-custom-html="true"] .drill-down-indicator {
+  opacity: 1;
+}

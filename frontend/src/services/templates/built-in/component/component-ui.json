@@ -1,0 +1,21 @@
+{
+  "id": "template-component-ui",
+  "name": "UI Component",
+  "category": "component",
+  "template": {
+    "name": "UI Component",
+    "description": "Card-style component with decorative header",
+    "data": {
+      "label": "UI Component"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  width: {{ width or 160 }}px;\n  background: {{ backgroundColor or '#ffffff' }};\n  border-radius: {{ borderRadius or 12 }}px;\n  overflow: hidden;\n  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.15);\n  border: {{ borderWidth or 1 }}px solid {{ borderColor or '#fbcfe8' }};\n\">\n  <!-- Decorative header -->\n  <div style=\"\n    height: {{ headerHeight or 40 }}px;\n    background: linear-gradient(135deg, {{ headerStart or '#ec4899' }} 0%, {{ headerEnd or '#db2777' }} 100%);\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: {{ iconSize or 24 }}px;\n  \">{{ icon or '🎨' }}</div>\n\n  <!-- Content -->\n  <div style=\"padding: 12px; text-align: center;\">\n    <div style=\"\n      font-weight: 700;\n      font-size: {{ labelSize or 14 }}px;\n      color: {{ labelColor or '#be185d' }};\n      margin-bottom: 4px;\n    \">{{ label }}</div>\n\n    {% if subtitle %}\n    <div style=\"\n      font-size: {{ subtitleSize or 10 }}px;\n      color: {{ subtitleColor or '#9d174d' }};\n      margin-bottom: 8px;\n    \">{{ subtitle }}</div>\n    {% endif %}\n\n    <!-- Component preview boxes -->\n    <div style=\"\n      display: flex;\n      gap: 6px;\n      justify-content: center;\n      margin-top: 8px;\n    \">\n      <div style=\"\n        width: {{ boxSize or 20 }}px;\n        height: {{ boxSize or 20 }}px;\n        background: {{ box1Color or '#fce7f3' }};\n        border-radius: 4px;\n      \"></div>\n      <div style=\"\n        width: {{ boxSize or 20 }}px;\n        height: {{ boxSize or 20 }}px;\n        background: {{ box2Color or '#fbcfe8' }};\n        border-radius: 4px;\n      \"></div>\n      <div style=\"\n        width: {{ boxSize or 20 }}px;\n        height: {{ boxSize or 20 }}px;\n        background: {{ box3Color or '#f9a8d4' }};\n        border-radius: 4px;\n      \"></div>\n    </div>\n\n    {% if framework %}\n    <div style=\"\n      margin-top: 10px;\n      font-size: {{ frameworkSize or 9 }}px;\n      color: {{ frameworkColor or '#ec4899' }};\n      background: {{ frameworkBg or '#fdf2f8' }};\n      padding: 3px 8px;\n      border-radius: 10px;\n      display: inline-block;\n      font-weight: 700;\n      text-transform: uppercase;\n      letter-spacing: 0.05em;\n    \">{{ framework }}</div>\n    {% endif %}\n  </div>\n</div>",
+    "variables": [],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "component",
+      "ui",
+      "frontend"
+    ]
+  }
+}

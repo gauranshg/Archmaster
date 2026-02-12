@@ -1,0 +1,101 @@
+{
+  "id": "template-database-mongodb",
+  "name": "MongoDB Database",
+  "category": "database",
+  "template": {
+    "name": "MongoDB Database",
+    "description": "Document-style database with card layout",
+    "data": {
+      "label": "MongoDB Database"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  width: {{ width or 180 }}px;\n  background: {{ backgroundColor or '#f0fdf4' }};\n  border-radius: {{ borderRadius or 12 }}px;\n  border-left: {{ borderThickness or 6 }}px solid {{ borderColor or '#22c55e' }};\n  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);\n\">\n  <!-- Header bar -->\n  <div style=\"\n    background: linear-gradient(90deg, {{ headerBg or '#22c55e' }} 0%, {{ headerBgEnd or '#16a34a' }} 100%);\n    padding: 8px 12px;\n    border-radius: {{ borderRadius or 12 }}px {{ borderRadius or 12 }}px 0 0;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n  \">\n    <span style=\"\n      font-size: {{ iconSize or 24 }}px;\n      filter: brightness(0) invert(1);\n    \">{{ icon or '🍃' }}</span>\n    <span style=\"\n      font-size: {{ badgeSize or 9 }}px;\n      color: white;\n      font-weight: 700;\n      text-transform: uppercase;\n      letter-spacing: 0.1em;\n    \">NoSQL</span>\n  </div>\n\n  <!-- Content area -->\n  <div style=\"padding: 12px;\">\n    <div style=\"\n      font-weight: 700;\n      font-size: {{ labelSize or 15 }}px;\n      color: {{ labelColor or '#14532d' }};\n      margin-bottom: 6px;\n    \">\n      {{ label }}\n    </div>\n    {% if subtitle %}\n    <div style=\"\n      display: flex;\n      align-items: center;\n      gap: 6px;\n      font-size: {{ subtitleSize or 11 }}px;\n      color: {{ subtitleColor or '#166534' }};\n      font-family: monospace;\n    \">\n      <span style=\"color: {{ iconColor or '#22c55e' }};\">●</span>\n      {{ subtitle }}\n    </div>\n    {% endif %}\n\n    <!-- Document rows visual -->\n    <div style=\"\n      margin-top: 10px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n    \">\n      <div style=\"\n        height: 6px;\n        background: {{ docBg or '#dcfce7' }};\n        border-radius: 3px;\n        width: 80%;\n      \"></div>\n      <div style=\"\n        height: 6px;\n        background: {{ docBg or '#dcfce7' }};\n        border-radius: 3px;\n        width: 60%;\n      \"></div>\n      <div style=\"\n        height: 6px;\n        background: {{ docBg or '#dcfce7' }};\n        border-radius: 3px;\n        width: 70%;\n      \"></div>\n    </div>\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtitle",
+        "type": "text"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "min": 120,
+        "max": 250
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 24
+      },
+      {
+        "name": "subtitleColor",
+        "label": "Subtitle Color",
+        "type": "color"
+      },
+      {
+        "name": "subtitleSize",
+        "label": "Subtitle Size",
+        "type": "number",
+        "min": 8,
+        "max": 18
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "database",
+      "nosql",
+      "document",
+      "mongodb"
+    ]
+  }
+}

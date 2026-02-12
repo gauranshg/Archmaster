@@ -1,0 +1,101 @@
+{
+  "id": "template-cache",
+  "name": "Cache",
+  "category": "infrastructure",
+  "template": {
+    "name": "Cache",
+    "description": "Lightning-style cache with speed lines",
+    "data": {
+      "label": "Cache"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 16px;\n  width: {{ width or 170 }}px;\n  background: {{ backgroundColor or '#fefce8' }};\n  border-radius: {{ borderRadius or 12 }}px;\n  border: {{ borderWidth or 2 }}px solid {{ borderColor or '#eab308' }};\n  overflow: hidden;\n\">\n  <!-- Speed lines background -->\n  <div style=\"\n    position: absolute;\n    right: -20px;\n    top: 50%;\n    transform: translateY(-50%) rotate(45deg);\n    width: 80px;\n    height: 2px;\n    background: linear-gradient(90deg, transparent, {{ speedColor or '#facc15' }});\n    opacity: 0.6;\n  \"></div>\n  <div style=\"\n    position: absolute;\n    right: -10px;\n    top: 50%;\n    transform: translateY(-50%) rotate(45deg);\n    width: 60px;\n    height: 2px;\n    background: linear-gradient(90deg, transparent, {{ speedColor or '#facc15' }});\n    opacity: 0.4;\n  \"></div>\n\n  <!-- Icon with glow -->\n  <div style=\"\n    position: relative;\n    font-size: {{ iconSize or 36 }}px;\n    filter: drop-shadow(0 0 8px {{ glowColor or '#facc15' }});\n    z-index: 1;\n  \">{{ icon or '⚡' }}</div>\n\n  <!-- Text content -->\n  <div style=\"position: relative; z-index: 1;\">\n    <div style=\"\n      font-weight: 800;\n      font-size: {{ labelSize or 16 }}px;\n      color: {{ labelColor or '#a16207' }};\n      line-height: 1.2;\n    \">{{ label }}</div>\n\n    {% if subtitle %}\n    <div style=\"\n      font-size: {{ subtitleSize or 10 }}px;\n      color: {{ subtitleColor or '#ca8a04' }};\n      font-weight: 600;\n      text-transform: uppercase;\n      letter-spacing: 0.1em;\n    \">{{ subtitle }}</div>\n    {% endif %}\n\n    <div style=\"\n      margin-top: 4px;\n      display: flex;\n      gap: 3px;\n    \">\n      <div style=\"\n        width: 8px;\n        height: 3px;\n        background: {{ indicatorColor or '#eab308' }};\n        border-radius: 2px;\n      \"></div>\n      <div style=\"\n        width: 12px;\n        height: 3px;\n        background: {{ indicatorColor or '#eab308' }};\n        border-radius: 2px;\n      \"></div>\n      <div style=\"\n        width: 6px;\n        height: 3px;\n        background: {{ indicatorColor or '#eab308' }};\n        border-radius: 2px;\n      \"></div>\n    </div>\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtitle",
+        "type": "text"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "min": 120,
+        "max": 250
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 24
+      },
+      {
+        "name": "subtitleColor",
+        "label": "Subtitle Color",
+        "type": "color"
+      },
+      {
+        "name": "subtitleSize",
+        "label": "Subtitle Size",
+        "type": "number",
+        "min": 8,
+        "max": 18
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "cache",
+      "redis",
+      "performance",
+      "memory"
+    ]
+  }
+}

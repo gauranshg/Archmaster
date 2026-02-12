@@ -1,0 +1,117 @@
+{
+  "id": "template-user",
+  "name": "User",
+  "category": "external",
+  "template": {
+    "name": "User",
+    "description": "Human user or actor with cyan styling",
+    "data": {
+      "label": "User"
+    },
+    "jinjaTemplate": "<div style=\"\n  text-align: center;\n  padding: 14px;\n  width: {{ width or 130 }}px;\n  border-radius: {{ borderRadius or 20 }}px;\n  background: {{ backgroundColor or '#ffffff' }};\n  border: {{ borderWidth or 2 }}px solid {{ borderColor or '#9ca3af' }};\n\">\n  <div style=\"\n    width: {{ iconCircleSize or 50 }}px;\n    height: {{ iconCircleSize or 50 }}px;\n    border-radius: 50%;\n    background: {{ iconBackground or '#ecfeff' }};\n    margin: 0 auto 8px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    color: {{ iconColor or '#0891b2' }};\n    font-size: {{ iconSize or 32 }}px;\n  \">\n    {{ icon or '👤' }}\n  </div>\n  <div style=\"\n    font-weight: 600;\n    font-size: {{ labelSize or 14 }}px;\n    color: {{ labelColor or '#374151' }};\n  \">\n    {{ label }}\n  </div>\n  {% if subtitle %}\n  <div style=\"\n    font-size: {{ subtitleSize or 11 }}px;\n    color: {{ subtitleColor or '#64748b' }};\n    margin-top: 4px;\n  \">\n    {{ subtitle }}\n  </div>\n  {% endif %}\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtitle",
+        "type": "text"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "min": 100,
+        "max": 200
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 10,
+        "max": 30
+      },
+      {
+        "name": "iconBackground",
+        "label": "Icon Circle Background",
+        "type": "color"
+      },
+      {
+        "name": "iconColor",
+        "label": "Icon Color",
+        "type": "color"
+      },
+      {
+        "name": "iconCircleSize",
+        "label": "Icon Circle Size",
+        "type": "number",
+        "min": 40,
+        "max": 70
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 24
+      },
+      {
+        "name": "subtitleColor",
+        "label": "Subtitle Color",
+        "type": "color"
+      },
+      {
+        "name": "subtitleSize",
+        "label": "Subtitle Size",
+        "type": "number",
+        "min": 8,
+        "max": 18
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "user",
+      "person",
+      "actor"
+    ]
+  }
+}

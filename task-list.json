@@ -1,0 +1,1379 @@
+{
+  "projectName": "Custom Architecture Platform",
+  "version": "1.0.0",
+  "createdDate": "2026-01-25",
+  "estimatedTimeline": "6-9 months",
+  "phases": [
+    {
+      "id": 1,
+      "name": "Foundation (MVP)",
+      "goal": "Basic diagram editor with manual positioning and JSON import/export",
+      "status": "pending",
+      "categories": [
+        {
+          "id": "1.1",
+          "name": "Project Setup & Infrastructure",
+          "tasks": [
+            {
+              "id": "1.1.1",
+              "title": "Copy and adapt Azure infrastructure from Starterkit-1",
+              "description": "Reuse Azure infrastructure templates and adapt for diagram platform",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "high",
+                "files": ["infra/main.bicep", "azure.yaml"],
+                "adaptations": [
+                  "Update Cosmos DB container specifications for diagram data model",
+                  "Configure Blob Storage for diagram exports and templates"
+                ]
+              },
+              "estimatedFiles": ["infra/main.bicep", "azure.yaml"],
+              "status": "pending"
+            },
+            {
+              "id": "1.1.2",
+              "title": "Set up Python Azure Functions backend",
+              "description": "Create diagram CRUD endpoints and export/import functionality",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.1.1"],
+              "starterKitReuse": {
+                "level": "high",
+                "files": ["src/api/function_app.py"],
+                "adaptations": [
+                  "Reuse health check endpoint structure",
+                  "Reuse secret management pattern",
+                  "Create diagram CRUD endpoints",
+                  "Create export/import endpoints"
+                ]
+              },
+              "estimatedFiles": ["api/functions/diagram_functions.py", "api/model/diagram.py"],
+              "status": "pending"
+            },
+            {
+              "id": "1.1.3",
+              "title": "Initialize React frontend with Vite",
+              "description": "Set up React project with all required dependencies",
+              "priority": "high",
+              "effort": "low",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "medium",
+                "files": [".github/workflows/", "staticwebapp.config.json"],
+                "adaptations": [
+                  "Reuse CI/CD pipeline",
+                  "Reuse Static Web Apps configuration",
+                  "Install React Flow, Zustand, Tailwind CSS, DOMPurify",
+                  "Set up TypeScript strict mode"
+                ]
+              },
+              "estimatedFiles": ["frontend/package.json", "frontend/vite.config.ts", "frontend/tsconfig.json"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "1.2",
+          "name": "Frontend Core Components",
+          "tasks": [
+            {
+              "id": "1.2.1",
+              "title": "Create data types and interfaces",
+              "description": "Define TypeScript interfaces for all data models",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.1.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "references": ["docs/data-model-specification.md"],
+              "estimatedFiles": ["frontend/src/types/diagram.ts", "frontend/src/types/node.ts", "frontend/src/types/edge.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "1.2.2",
+              "title": "Set up Zustand state management",
+              "description": "Create diagram and workspace stores with auto-save",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/store/diagramStore.ts", "frontend/src/store/workspaceStore.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "1.2.3",
+              "title": "Build diagram canvas with React Flow",
+              "description": "Implement core diagram editor with draggable nodes and edges",
+              "priority": "high",
+              "effort": "high",
+              "dependencies": ["1.2.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/diagram/DiagramCanvas.tsx", "frontend/src/components/diagram/CustomNode.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "1.2.4",
+              "title": "Build properties panel",
+              "description": "Create UI for editing node and edge properties",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/common/PropertiesPanel.tsx", "frontend/src/components/diagram/NodeProperties.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "1.2.5",
+              "title": "Implement JSON import/export",
+              "description": "Add functionality to save and load diagrams as JSON",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/importExport.ts"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "1.3",
+          "name": "Storage & API Integration",
+          "tasks": [
+            {
+              "id": "1.3.1",
+              "title": "Set up IndexedDB with Dexie (MVP storage)",
+              "description": "Implement local storage for diagrams",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/services/indexeddb.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "1.3.2",
+              "title": "Create API client service",
+              "description": "Build HTTP client for Azure Functions backend",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["1.1.2"],
+              "starterKitReuse": {
+                "level": "medium"
+              },
+              "estimatedFiles": ["frontend/src/services/api.ts"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "1.4",
+          "name": "Basic Layout & Navigation",
+          "tasks": [
+            {
+              "id": "1.4.1",
+              "title": "Create app shell layout",
+              "description": "Build main application layout with header, sidebar, and canvas",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "low"
+              },
+              "estimatedFiles": ["frontend/src/components/layout/AppShell.tsx", "frontend/src/components/layout/Header.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "1.4.2",
+              "title": "Implement diagram list view",
+              "description": "Create sidebar with list of all diagrams",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["1.4.1", "1.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/sidebar/DiagramList.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "1.5",
+          "name": "Security Implementation",
+          "tasks": [
+            {
+              "id": "1.5.1",
+              "title": "Implement HTML sanitization",
+              "description": "Integrate DOMPurify to prevent XSS attacks",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/sanitization.ts"],
+              "status": "pending"
+            }
+          ]
+        }
+      ],
+      "verificationTests": [
+        "Create a diagram with 5 nodes",
+        "Connect nodes with edges",
+        "Export diagram as JSON",
+        "Import JSON and verify data integrity",
+        "Edit node properties and verify updates",
+        "Test XSS prevention with malicious HTML"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Editor & Customization",
+      "goal": "Monaco code editor, bidirectional sync, templates, custom CSS, themes",
+      "status": "pending",
+      "categories": [
+        {
+          "id": "2.1",
+          "name": "Monaco Editor Integration",
+          "tasks": [
+            {
+              "id": "2.1.1",
+              "title": "Set up Monaco Editor",
+              "description": "Install and configure Monaco Editor with JSON/YAML support",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/editor/MonacoEditor.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "2.1.2",
+              "title": "Implement bidirectional sync",
+              "description": "Sync changes between canvas and code editor",
+              "priority": "high",
+              "effort": "high",
+              "dependencies": ["2.1.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/hooks/useBidirectionalSync.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "2.1.3",
+              "title": "Create hybrid split-screen view",
+              "description": "Build layout with both editors side by side",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["2.1.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/editor/HybridView.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "2.2",
+          "name": "Template System",
+          "tasks": [
+            {
+              "id": "2.2.1",
+              "title": "Design template data model",
+              "description": "Define template structure and CRUD operations",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/types/template.ts", "api/model/template.py"],
+              "status": "pending"
+            },
+            {
+              "id": "2.2.2",
+              "title": "Build template management UI",
+              "description": "Create template gallery and editor",
+              "priority": "high",
+              "effort": "high",
+              "dependencies": ["2.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/template/TemplateGallery.tsx", "frontend/src/components/template/TemplateEditor.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "2.2.3",
+              "title": "Implement template application",
+              "description": "Create logic to apply templates to nodes",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["2.2.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/services/templateService.ts"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "2.3",
+          "name": "Custom CSS Support",
+          "tasks": [
+            {
+              "id": "2.3.1",
+              "title": "Create CSS editor component",
+              "description": "Build Monaco-based CSS editor",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["2.1.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/editor/CSSEditor.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "2.3.2",
+              "title": "Implement CSS injection system",
+              "description": "Create scoped CSS injection with security filtering",
+              "priority": "high",
+              "effort": "high",
+              "dependencies": ["2.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/cssInjection.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "2.3.3",
+              "title": "Build per-diagram CSS UI",
+              "description": "Add CSS panel to properties editor",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["2.3.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/diagram/CSSPanel.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "2.4",
+          "name": "Theme System",
+          "tasks": [
+            {
+              "id": "2.4.1",
+              "title": "Design theme architecture",
+              "description": "Define theme types and variants",
+              "priority": "medium",
+              "effort": "low",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/types/theme.ts", "frontend/src/styles/themes.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "2.4.2",
+              "title": "Implement theme provider",
+              "description": "Create theme context and switcher",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["2.4.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/contexts/ThemeContext.tsx", "frontend/src/components/common/ThemeSwitcher.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "2.4.3",
+              "title": "Apply themes to components",
+              "description": "Update all components to use theme tokens",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": ["2.4.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": "Multiple component files updated",
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "2.5",
+          "name": "Node Customization",
+          "tasks": [
+            {
+              "id": "2.5.1",
+              "title": "Build HTML content editor",
+              "description": "Create rich text editor for node content",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["1.5.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/editor/HTMLEditor.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "2.5.2",
+              "title": "Implement node resizing",
+              "description": "Add resize handles to nodes",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/diagram/ResizableNode.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "2.5.3",
+              "title": "Add icon picker",
+              "description": "Integrate Lucide icons and custom SVG support",
+              "priority": "low",
+              "effort": "medium",
+              "dependencies": ["1.2.4"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/common/IconPicker.tsx"],
+              "status": "pending"
+            }
+          ]
+        }
+      ],
+      "verificationTests": [
+        "Create node with custom HTML content",
+        "Apply custom CSS and verify rendering",
+        "Edit in code editor and sync to canvas",
+        "Edit on canvas and sync to code editor",
+        "Create template from node",
+        "Apply template to new node",
+        "Switch between light/dark themes"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Layout & Navigation",
+      "goal": "Auto-layout algorithms, sidebar tree navigation, drill-down navigation",
+      "status": "pending",
+      "categories": [
+        {
+          "id": "3.1",
+          "name": "Auto-Layout Algorithms",
+          "tasks": [
+            {
+              "id": "3.1.1",
+              "title": "Integrate Dagre layout",
+              "description": "Install and create wrapper for Dagre layout algorithm",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/services/layout/dagreLayout.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "3.1.2",
+              "title": "Integrate ELK layout (optional)",
+              "description": "Install and create wrapper for ELK layout algorithm",
+              "priority": "low",
+              "effort": "medium",
+              "dependencies": ["3.1.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/services/layout/elkLayout.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "3.1.3",
+              "title": "Build layout controls UI",
+              "description": "Create UI for layout algorithm selection and controls",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["3.1.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/diagram/LayoutControls.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "3.2",
+          "name": "Hierarchical Navigation",
+          "tasks": [
+            {
+              "id": "3.2.1",
+              "title": "Implement diagram hierarchy model",
+              "description": "Add parent/child relationships to diagrams",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/types/diagram.ts", "api/model/diagram.py"],
+              "status": "pending"
+            },
+            {
+              "id": "3.2.2",
+              "title": "Build sidebar tree navigation",
+              "description": "Create tree view with expand/collapse",
+              "priority": "high",
+              "effort": "high",
+              "dependencies": ["3.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/sidebar/TreeNavigation.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "3.2.3",
+              "title": "Implement drill-down navigation",
+              "description": "Add double-click to navigate to child diagrams",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["3.2.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/hooks/useDrillDown.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "3.2.4",
+              "title": "Add breadcrumbs navigation",
+              "description": "Create breadcrumbs component for path tracking",
+              "priority": "medium",
+              "effort": "low",
+              "dependencies": ["3.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/common/Breadcrumbs.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "3.3",
+          "name": "Advanced Connection Styles",
+          "tasks": [
+            {
+              "id": "3.3.1",
+              "title": "Implement edge styles",
+              "description": "Add solid, dashed, dotted edge types",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/diagram/CustomEdge.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "3.3.2",
+              "title": "Add arrowhead customization",
+              "description": "Create arrowhead markers and picker",
+              "priority": "low",
+              "effort": "medium",
+              "dependencies": ["3.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/diagram/ArrowheadPicker.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "3.3.3",
+              "title": "Implement edge routing options",
+              "description": "Add orthogonal, curved, and straight routing",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": ["3.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/services/edgeRouting.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "3.3.4",
+              "title": "Add edge animation",
+              "description": "Create animated flow effect on edges",
+              "priority": "low",
+              "effort": "medium",
+              "dependencies": ["3.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/diagram/AnimatedEdge.tsx"],
+              "status": "pending"
+            }
+          ]
+        }
+      ],
+      "verificationTests": [
+        "Apply auto-layout to complex diagram",
+        "Navigate from parent to child diagram",
+        "Use breadcrumbs to navigate back",
+        "Create 3-level diagram hierarchy",
+        "Apply different edge styles"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "C4 Model & Advanced Features",
+      "goal": "C4 diagram presets, image export, version control",
+      "status": "pending",
+      "categories": [
+        {
+          "id": "4.1",
+          "name": "C4 Model Support",
+          "tasks": [
+            {
+              "id": "4.1.1",
+              "title": "Create C4 diagram type definitions",
+              "description": "Define C4 diagram types and node templates",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["2.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/types/c4.ts", "frontend/src/templates/c4Templates.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "4.1.2",
+              "title": "Build C4 preset gallery",
+              "description": "Create C4 diagram templates with styling",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": ["4.1.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/c4/C4Presets.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "4.1.3",
+              "title": "Implement C4 notation helpers",
+              "description": "Add C4-specific element and relationship types",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["4.1.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/c4Helpers.ts"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "4.2",
+          "name": "Export Features",
+          "tasks": [
+            {
+              "id": "4.2.1",
+              "title": "Implement PNG export",
+              "description": "Add PNG export functionality",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/export/png.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "4.2.2",
+              "title": "Implement SVG export",
+              "description": "Add SVG export with styling preservation",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/export/svg.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "4.2.3",
+              "title": "Add export UI",
+              "description": "Build export dialog with format selection",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["4.2.1", "4.2.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/common/ExportDialog.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "4.3",
+          "name": "Version Control",
+          "tasks": [
+            {
+              "id": "4.3.1",
+              "title": "Design version history model",
+              "description": "Add version tracking to data model",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["1.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/types/version.ts", "api/functions/version_functions.py"],
+              "status": "pending"
+            },
+            {
+              "id": "4.3.2",
+              "title": "Implement version history UI",
+              "description": "Create version timeline and restore functionality",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": ["4.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/version/VersionHistory.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "4.4",
+          "name": "Advanced Features",
+          "tasks": [
+            {
+              "id": "4.4.1",
+              "title": "Add copy/paste functionality",
+              "description": "Implement clipboard operations for nodes and edges",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/hooks/useClipboard.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "4.4.2",
+              "title": "Implement undo/redo",
+              "description": "Create history management system",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": ["1.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/store/historyStore.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "4.4.3",
+              "title": "Add keyboard shortcuts",
+              "description": "Define global shortcuts and help dialog",
+              "priority": "low",
+              "effort": "medium",
+              "dependencies": ["1.4.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/keyboardShortcuts.ts", "frontend/src/components/common/ShortcutHelp.tsx"],
+              "status": "pending"
+            }
+          ]
+        }
+      ],
+      "verificationTests": [
+        "Create C4 System Context diagram",
+        "Create C4 Container diagram",
+        "Create C4 Component diagram",
+        "Export diagram as PNG",
+        "Export diagram as SVG",
+        "Create version history",
+        "Restore from previous version"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Authentication & Deployment",
+      "goal": "Azure AD integration, RBAC, Azure deployment",
+      "status": "pending",
+      "categories": [
+        {
+          "id": "5.1",
+          "name": "Azure AD Integration",
+          "tasks": [
+            {
+              "id": "5.1.1",
+              "title": "Set up Azure AD app registration",
+              "description": "Configure Azure AD application",
+              "priority": "high",
+              "effort": "low",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "high",
+                "files": ["infra/register_ad_app.py"],
+                "adaptations": [
+                  "Configure redirect URIs for the app",
+                  "Set up API permissions"
+                ]
+              },
+              "status": "pending"
+            },
+            {
+              "id": "5.1.2",
+              "title": "Implement frontend authentication",
+              "description": "Integrate MSAL.js for authentication",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["5.1.1"],
+              "starterKitReuse": {
+                "level": "medium"
+              },
+              "estimatedFiles": ["frontend/src/contexts/AuthContext.tsx", "frontend/src/components/auth/LoginButton.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "5.1.3",
+              "title": "Implement backend authentication",
+              "description": "Create JWT validation middleware",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["5.1.1"],
+              "starterKitReuse": {
+                "level": "high",
+                "files": ["api/utils/secret.py"],
+                "adaptations": [
+                  "Reuse secret management pattern",
+                  "Create JWT validation middleware",
+                  "Protect API endpoints"
+                ]
+              },
+              "estimatedFiles": ["api/middleware/auth.py", "api/utils/auth.py"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "5.2",
+          "name": "Role-Based Access Control (RBAC)",
+          "tasks": [
+            {
+              "id": "5.2.1",
+              "title": "Design RBAC model",
+              "description": "Define roles and permissions",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["5.1.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["api/model/role.py", "frontend/src/types/role.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "5.2.2",
+              "title": "Implement role assignment",
+              "description": "Create role assignment API and admin UI",
+              "priority": "high",
+              "effort": "high",
+              "dependencies": ["5.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["api/functions/rbac_functions.py", "frontend/src/components/admin/RoleManager.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "5.2.3",
+              "title": "Enforce permissions",
+              "description": "Add permission checks to frontend and backend",
+              "priority": "high",
+              "effort": "high",
+              "dependencies": ["5.2.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/utils/permissions.ts", "api/middleware/authorization.py"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "5.3",
+          "name": "Azure Deployment",
+          "tasks": [
+            {
+              "id": "5.3.1",
+              "title": "Configure Azure Static Web Apps",
+              "description": "Set up CI/CD and configuration",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.1.3"],
+              "starterKitReuse": {
+                "level": "high",
+                "files": [".github/workflows/"],
+                "adaptations": [
+                  "Reuse CI/CD pipeline",
+                  "Set up build configuration",
+                  "Configure routes and auth rules"
+                ]
+              },
+              "estimatedFiles": ["azure-static-web-apps.yml", "staticwebapp.config.json"],
+              "status": "pending"
+            },
+            {
+              "id": "5.3.2",
+              "title": "Deploy Azure Functions",
+              "description": "Provision infrastructure and deploy backend",
+              "priority": "high",
+              "effort": "medium",
+              "dependencies": ["1.1.2"],
+              "starterKitReuse": {
+                "level": "high",
+                "files": ["infra/main.bicep", "azure.yaml"],
+                "adaptations": [
+                  "Run azd up to provision",
+                  "Deploy Python function code"
+                ]
+              },
+              "estimatedFiles": ["infra/main.bicep", "azure.yaml"],
+              "status": "pending"
+            },
+            {
+              "id": "5.3.3",
+              "title": "Set up Key Vault secrets",
+              "description": "Configure all required secrets",
+              "priority": "high",
+              "effort": "low",
+              "dependencies": ["5.3.2"],
+              "starterKitReuse": {
+                "level": "high",
+                "files": ["infra/set_secrets.py"],
+                "adaptations": [
+                  "Reuse script",
+                  "Configure required secrets"
+                ]
+              },
+              "status": "pending"
+            },
+            {
+              "id": "5.3.4",
+              "title": "Configure Application Insights",
+              "description": "Set up monitoring and telemetry",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["5.3.2"],
+              "starterKitReuse": {
+                "level": "medium"
+              },
+              "estimatedFiles": ["api/utils/telemetry.py"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "5.4",
+          "name": "Production Optimization",
+          "tasks": [
+            {
+              "id": "5.4.1",
+              "title": "Optimize bundle size",
+              "description": "Analyze and optimize dependencies",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["5.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/vite.config.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "5.4.2",
+              "title": "Implement caching strategy",
+              "description": "Add service worker and HTTP caching",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["5.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/public/sw.js"],
+              "status": "pending"
+            },
+            {
+              "id": "5.4.3",
+              "title": "Set up CDN",
+              "description": "Configure Azure CDN for static assets",
+              "priority": "low",
+              "effort": "low",
+              "dependencies": ["5.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "status": "pending"
+            }
+          ]
+        }
+      ],
+      "verificationTests": [
+        "Login with Azure AD",
+        "Test role-based permissions",
+        "Deploy to Azure Static Web Apps",
+        "Deploy Azure Functions",
+        "Verify all services healthy",
+        "Load test with 100+ concurrent users"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Collaboration & Polish",
+      "goal": "Comments system, shareable links, real-time collaboration",
+      "status": "pending",
+      "categories": [
+        {
+          "id": "6.1",
+          "name": "Comments System",
+          "tasks": [
+            {
+              "id": "6.1.1",
+              "title": "Design comments data model",
+              "description": "Create comment entity with threaded replies",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["5.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["api/model/comment.py", "frontend/src/types/comment.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "6.1.2",
+              "title": "Implement comments API",
+              "description": "Create CRUD endpoints for comments",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["6.1.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["api/functions/comment_functions.py"],
+              "status": "pending"
+            },
+            {
+              "id": "6.1.3",
+              "title": "Build comments UI",
+              "description": "Create comments panel and markers",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": ["6.1.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/comments/CommentsPanel.tsx", "frontend/src/components/comments/CommentMarker.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "6.2",
+          "name": "Shareable Links",
+          "tasks": [
+            {
+              "id": "6.2.1",
+              "title": "Implement sharing model",
+              "description": "Add sharing permissions to diagrams",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["5.2.3"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["api/model/sharing.py", "frontend/src/types/sharing.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "6.2.2",
+              "title": "Create sharing UI",
+              "description": "Build share dialog with permissions",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["6.2.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/sharing/ShareDialog.tsx"],
+              "status": "pending"
+            },
+            {
+              "id": "6.2.3",
+              "title": "Implement public view mode",
+              "description": "Create read-only viewer",
+              "priority": "medium",
+              "effort": "medium",
+              "dependencies": ["6.2.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/viewer/PublicViewer.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "6.3",
+          "name": "Real-Time Collaboration",
+          "tasks": [
+            {
+              "id": "6.3.1",
+              "title": "Set up Azure SignalR",
+              "description": "Add SignalR service to infrastructure",
+              "priority": "low",
+              "effort": "medium",
+              "dependencies": ["5.3.2"],
+              "starterKitReuse": {
+                "level": "medium",
+                "files": ["infra/main.bicep"],
+                "adaptations": [
+                  "Add SignalR to infrastructure",
+                  "Configure WebSocket connections"
+                ]
+              },
+              "estimatedFiles": ["infra/main.bicep"],
+              "status": "pending"
+            },
+            {
+              "id": "6.3.2",
+              "title": "Implement real-time sync",
+              "description": "Create SignalR hub for diagram updates",
+              "priority": "low",
+              "effort": "high",
+              "dependencies": ["6.3.1"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["api/functions/signalr_hub.py", "frontend/src/services/realtime.ts"],
+              "status": "pending"
+            },
+            {
+              "id": "6.3.3",
+              "title": "Add collaborative features",
+              "description": "Show user cursors and presence",
+              "priority": "low",
+              "effort": "medium",
+              "dependencies": ["6.3.2"],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/components/collaboration/UserCursors.tsx"],
+              "status": "pending"
+            }
+          ]
+        },
+        {
+          "id": "6.4",
+          "name": "Polish & Performance",
+          "tasks": [
+            {
+              "id": "6.4.1",
+              "title": "Performance optimization",
+              "description": "Implement virtual rendering and lazy loading",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "status": "pending"
+            },
+            {
+              "id": "6.4.2",
+              "title": "Accessibility improvements",
+              "description": "Add ARIA labels and keyboard navigation",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "status": "pending"
+            },
+            {
+              "id": "6.4.3",
+              "title": "Documentation",
+              "description": "Write user guide and API documentation",
+              "priority": "low",
+              "effort": "high",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["docs/user-guide.md", "docs/api-documentation.md"],
+              "status": "pending"
+            },
+            {
+              "id": "6.4.4",
+              "title": "Testing",
+              "description": "Write unit, integration, and E2E tests",
+              "priority": "medium",
+              "effort": "high",
+              "dependencies": [],
+              "starterKitReuse": {
+                "level": "none"
+              },
+              "estimatedFiles": ["frontend/src/**/*.test.ts", "api/**/*.test.py"],
+              "status": "pending"
+            }
+          ]
+        }
+      ],
+      "verificationTests": [
+        "Add comment to node",
+        "Reply to comment",
+        "Share diagram via link",
+        "Open shared diagram in read-only mode",
+        "Collaborate with 2+ users in real-time",
+        "Verify performance with 500+ nodes"
+      ]
+    }
+  ],
+  "starterKitReuse": {
+    "highlyReusable": [
+      {
+        "component": "Azure Infrastructure",
+        "files": ["infra/main.bicep", "azure.yaml"],
+        "description": "Complete backend foundation for diagram services"
+      },
+      {
+        "component": "Health Monitoring System",
+        "files": ["src/api/function_app.py"],
+        "description": "Monitor diagram services and dependencies"
+      },
+      {
+        "component": "Secret Management",
+        "files": ["infra/set_secrets.py"],
+        "description": "API keys, storage credentials, etc."
+      },
+      {
+        "component": "Azure AD Setup",
+        "files": ["infra/register_ad_app.py"],
+        "description": "User management and authentication"
+      },
+      {
+        "component": "CI/CD Pipeline",
+        "files": [".github/workflows/"],
+        "description": "Automated platform deployment"
+      }
+    ],
+    "moderatelyReusable": [
+      {
+        "component": "Python Functions Structure",
+        "description": "Base structure and patterns"
+      },
+      {
+        "component": "API Health Checks",
+        "description": "Adapt for diagram services"
+      },
+      {
+        "component": "Frontend Build Config",
+        "description": "Adapt Vite config"
+      },
+      {
+        "component": "Application Insights",
+        "description": "Telemetry patterns"
+      }
+    ],
+    "requiresAdaptation": [
+      {
+        "component": "Database Schema",
+        "description": "Replace with diagram-specific models"
+      },
+      {
+        "component": "API Endpoints",
+        "description": "Replace with diagram CRUD"
+      },
+      {
+        "component": "Frontend Components",
+        "description": "Replace with diagram editor"
+      },
+      {
+        "component": "UI Framework",
+        "description": "Replace Ant Design with custom components"
+      }
+    ]
+  },
+  "fileStructure": {
+    "frontend": "React frontend with Vite, React Flow, Zustand",
+    "api": "Azure Functions (Python) with Cosmos DB",
+    "infra": "Azure infrastructure (Bicep) from starter kit",
+    "docs": "Project documentation"
+  },
+  "nextSteps": [
+    "Start with Phase 1 - Set up infrastructure and build basic diagram editor",
+    "Leverage starter kit - Reuse Azure infrastructure, health checks, secret management",
+    "Iterate quickly - Get to working MVP as fast as possible",
+    "Add complexity - Each phase builds on the previous",
+    "Test continuously - Verify features at each phase before moving forward"
+  ],
+  "metadata": {
+    "totalPhases": 6,
+    "totalCategories": 24,
+    "estimatedTasks": 96,
+    "highPriorityTasks": 45,
+    "mediumPriorityTasks": 38,
+    "lowPriorityTasks": 13,
+    "starterKitHighReuse": 15,
+    "starterKitMediumReuse": 8,
+    "starterKitAdaptationNeeded": 10
+  }
+}

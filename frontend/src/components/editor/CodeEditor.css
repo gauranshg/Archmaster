@@ -1,0 +1,108 @@
+/**
+ * Code Editor Styles
+ *
+ * Styles for Monaco Editor integration.
+ */
+
+.code-editor-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #1e1e1e;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Monaco editor overrides */
+.code-editor-wrapper .monaco-editor {
+  padding: 0;
+}
+
+.code-editor-wrapper .monaco-editor .margin {
+  background-color: #1e1e1e;
+}
+
+/* Custom scrollbar */
+.code-editor-wrapper ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.code-editor-wrapper ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.code-editor-wrapper ::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+.code-editor-wrapper ::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Minimap styling */
+.code-editor-wrapper .minimap {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.code-editor-wrapper .minimap:hover {
+  opacity: 1;
+}
+
+/* Error markers */
+.code-editor-wrapper .squiggly-error {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="3" width="6"><path d="M0 3 L6 3" stroke="red" stroke-width="1"/></svg>') repeat-x bottom left;
+}
+
+/* Line highlight */
+.code-editor-wrapper .current-line {
+  border-left: 2px solid #007acc;
+}
+
+/* Editor resize handle */
+.code-editor-wrapper .monaco-editor .overflow-guard {
+  position: relative;
+}
+
+/* Read-only mode styling */
+.code-editor-wrapper.read-only {
+  opacity: 0.9;
+}
+
+.code-editor-wrapper.read-only .monaco-editor,
+.code-editor-wrapper.read-only .margin {
+  background-color: #252526;
+}
+
+/* Loading state */
+.code-editor-wrapper.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.code-editor-wrapper.loading::after {
+  content: 'Loading editor...';
+  color: #888;
+  font-family: sans-serif;
+}
+
+/* Focus state */
+.code-editor-wrapper.focused {
+  box-shadow: 0 0 0 2px #007acc;
+  border-radius: 0.5rem;
+}
+
+/* Dark theme specific */
+.code-editor-wrapper[data-theme='vs-dark'] {
+  background-color: #1e1e1e;
+  border: 1px solid #3c3c3c;
+}
+
+/* Light theme specific (if needed) */
+.code-editor-wrapper[data-theme='vs'] {
+  background-color: #ffffff;
+  border: 1px solid #d4d4d4;
+}

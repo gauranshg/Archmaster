@@ -1,0 +1,101 @@
+{
+  "id": "template-storage",
+  "name": "Object Storage",
+  "category": "infrastructure",
+  "template": {
+    "name": "Object Storage",
+    "description": "Nested box storage design",
+    "data": {
+      "label": "Object Storage"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  width: {{ width or 140 }}px;\n  height: {{ height or 120 }}px;\n  background: {{ backgroundColor or '#ecfeff' }};\n  border: {{ borderOuter or 3 }}px solid {{ borderColor or '#06b6d4' }};\n  border-radius: {{ borderRadius or 8 }}px;\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n\">\n  <!-- Inner box -->\n  <div style=\"\n    width: 100%;\n    height: 100%;\n    background: {{ innerBg or '#cffafe' }};\n    border: {{ borderInner or 2 }}px dashed {{ borderColor or '#06b6d4' }};\n    border-radius: {{ innerRadius or 6 }}px;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    padding: 8px;\n  \">\n    <!-- Inner inner box -->\n    <div style=\"\n      width: 70%;\n      height: 60%;\n      background: {{ coreBg or '#ffffff' }};\n      border: {{ borderCore or 2 }}px solid {{ borderColor or '#06b6d4' }};\n      border-radius: {{ coreRadius or 4 }}px;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n    \">\n      <div style=\"font-size: {{ iconSize or 28 }}px; margin-bottom: 4px;\">\n        {{ icon or '📦' }}\n      </div>\n      <div style=\"\n        font-weight: 700;\n        font-size: {{ labelSize or 12 }}px;\n        color: {{ labelColor or '#0e7490' }};\n        text-align: center;\n      \">{{ label }}</div>\n      {% if subtitle %}\n      <div style=\"\n        font-size: {{ subtitleSize or 9 }}px;\n        color: {{ subtitleColor or '#06b6d4' }};\n        margin-top: 2px;\n      \">{{ subtitle }}</div>\n      {% endif %}\n    </div>\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtitle",
+        "type": "text"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "min": 120,
+        "max": 250
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 24
+      },
+      {
+        "name": "subtitleColor",
+        "label": "Subtitle Color",
+        "type": "color"
+      },
+      {
+        "name": "subtitleSize",
+        "label": "Subtitle Size",
+        "type": "number",
+        "min": 8,
+        "max": 18
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "storage",
+      "s3",
+      "blob",
+      "object"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "template-external-system",
+  "name": "External System",
+  "category": "external",
+  "template": {
+    "name": "External System",
+    "description": "External system or service with gray dashed border",
+    "data": {
+      "label": "External System"
+    },
+    "jinjaTemplate": "<div style=\"\n  text-align: center;\n  padding: 12px;\n  width: {{ width or 150 }}px;\n  border-radius: {{ borderRadius or 8 }}px;\n  background: {{ backgroundColor or '#f3f4f6' }};\n  border: {{ borderWidth or 2 }}px {{ borderStyle or 'dashed' }} {{ borderColor or '#9ca3af' }};\n\">\n  <div style=\"font-size: {{ iconSize or 28 }}px; margin-bottom: 8px;\">\n    {{ icon or '🔗' }}\n  </div>\n  <div style=\"\n    font-weight: 600;\n    font-size: {{ labelSize or 14 }}px;\n    color: {{ labelColor or '#4b5563' }};\n  \">\n    {{ label }}\n  </div>\n  {% if subtitle %}\n  <div style=\"\n    font-size: {{ subtitleSize or 11 }}px;\n    color: {{ subtitleColor or '#64748b' }};\n    margin-top: 4px;\n  \">\n    {{ subtitle }}\n  </div>\n  {% endif %}\n  {% if badge %}\n  <div style=\"\n    margin-top: 6px;\n    font-size: {{ badgeSize or 9 }}px;\n    color: {{ badgeColor or '#6b7280' }};\n    background: {{ badgeBackground or '#e5e7eb' }};\n    padding: 2px 8px;\n    border-radius: 10px;\n    display: inline-block;\n    font-weight: 600;\n    text-transform: uppercase;\n    letter-spacing: 0.05em;\n  \">\n    {{ badge }}\n  </div>\n  {% endif %}\n</div>",
+    "variables": [],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "external",
+      "system",
+      "third-party"
+    ]
+  }
+}

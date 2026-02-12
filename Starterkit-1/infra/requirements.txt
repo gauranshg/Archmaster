@@ -1,0 +1,8 @@
+azure-identity
+azure-keyvault-secrets
+azure-mgmt-cosmosdb
+azure-mgmt-web
+azure-mgmt-cognitiveservices
+python-dotenv
+azure-storage-blob
+azure-cosmos

@@ -1,0 +1,101 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+.env
+.env.test
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# Parcel-bundler cache (https://parceljs.org/)
+.cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build output
+.nuxt
+dist
+
+# Gatsby files
+.cache
+public
+
+# Vue build output
+dist
+build
+
+# Webpack compiled files
+build
+compiled
+
+# Linting output
+lint
+
+# Bower dependency directory
+bower_components
+
+# Heroku files
+Procfile
+profile.sh
+
+# Sass compiler output
+.sass-cache
+
+# IDEs
+*.sublime-project
+*.sublime-workspace
+*.sublime-projects
+*.sublime-workspaces
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# misc
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+

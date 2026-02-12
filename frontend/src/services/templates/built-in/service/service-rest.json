@@ -1,0 +1,102 @@
+{
+  "id": "template-service-rest",
+  "name": "REST API",
+  "category": "service",
+  "template": {
+    "name": "REST API",
+    "description": "Code-terminal style API endpoint",
+    "data": {
+      "label": "REST API"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  background: {{ backgroundColor or '#1a1a2e' }};\n  border-radius: {{ borderRadius or 10 }}px;\n  overflow: hidden;\n  width: {{ width or 220 }}px;\n  box-shadow: 0 4px 16px rgba(0,0,0,0.3);\n\">\n  <!-- Terminal header -->\n  <div style=\"\n    background: {{ headerColor or '#16213e' }};\n    padding: 8px 12px;\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    border-bottom: 1px solid {{ borderColor or '#0f3460' }};\n  \">\n    <div style=\"display: flex; gap: 6px;\">\n      <div style=\"width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;\"></div>\n      <div style=\"width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;\"></div>\n      <div style=\"width: 10px; height: 10px; border-radius: 50%; background: #27ca40;\"></div>\n    </div>\n    <span style=\"\n      font-size: {{ iconSize or 18 }}px;\n    \">{{ icon or '🔌' }}</span>\n  </div>\n\n  <!-- Terminal content -->\n  <div style=\"padding: 12px; font-family: 'Courier New', monospace;\">\n    <div style=\"\n      color: {{ methodColor or '#22c55e' }};\n      font-size: {{ methodSize or 12 }}px;\n      font-weight: 700;\n      margin-bottom: 4px;\n    \">{{ method or 'GET' }}</div>\n\n    <div style=\"\n      color: {{ labelColor or '#e2e8f0' }};\n      font-size: {{ labelSize or 15 }}px;\n      font-weight: 600;\n      margin-bottom: 8px;\n    \">{{ label }}</div>\n\n    {% if path %}\n    <div style=\"\n      color: {{ pathColor or '#60a5fa' }};\n      font-size: {{ pathSize or 12 }}px;\n      background: {{ pathBg or '#0f3460' }};\n      padding: 4px 8px;\n      border-radius: 4px;\n      display: inline-block;\n    \">{{ path }}</div>\n    {% endif %}\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "path",
+        "label": "API Path",
+        "type": "text",
+        "description": "API endpoint path"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "min": 120,
+        "max": 250
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 24
+      },
+      {
+        "name": "pathColor",
+        "label": "Path Color",
+        "type": "color"
+      },
+      {
+        "name": "pathSize",
+        "label": "Path Size",
+        "type": "number",
+        "min": 8,
+        "max": 16
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "api",
+      "rest",
+      "service",
+      "http"
+    ]
+  }
+}

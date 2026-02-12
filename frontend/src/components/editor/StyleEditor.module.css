@@ -1,0 +1,59 @@
+/**
+ * Style Editor Component Styles
+ */
+
+.styleEditor {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 600px;
+  background: white;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.styleEditorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.styleEditorContent {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.styleEditorFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .styleEditor {
+    width: 100%;
+  }
+}

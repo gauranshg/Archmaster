@@ -1,0 +1,118 @@
+{
+  "id": "template-service-microservice",
+  "name": "Microservice",
+  "category": "service",
+  "template": {
+    "name": "Microservice",
+    "description": "Hexagonal microservice with dual border",
+    "data": {
+      "label": "Microservice"
+    },
+    "jinjaTemplate": "<div style=\"\n  position: relative;\n  width: {{ width or 180 }}px;\n  padding: 16px;\n  text-align: center;\n  background: {{ backgroundColor or '#faf5ff' }};\n  clip-path: polygon(\n    25% 0%, 75% 0%,\n    100% 50%, 75% 100%,\n    25% 100%, 0% 50%\n  );\n\">\n  <!-- Outer hexagon border -->\n  <div style=\"\n    position: absolute;\n    inset: 3px;\n    background: {{ innerBg or '#ffffff' }};\n    clip-path: polygon(\n      25% 0%, 75% 0%,\n      100% 50%, 75% 100%,\n      25% 100%, 0% 50%\n    );\n  \"></div>\n\n  <div style=\"position: relative; z-index: 1;\">\n    <div style=\"\n      font-size: {{ iconSize or 38 }}px;\n      margin-bottom: 8px;\n    \">{{ icon or '⚙️' }}</div>\n\n    <div style=\"\n      font-weight: 700;\n      font-size: {{ labelSize or 14 }}px;\n      color: {{ labelColor or '#7c3aed' }};\n      margin-bottom: 4px;\n    \">{{ label }}</div>\n\n    {% if subtitle %}\n    <div style=\"\n      font-size: {{ subtitleSize or 10 }}px;\n      color: {{ subtitleColor or '#a78bfa' }};\n      text-transform: uppercase;\n      letter-spacing: 0.1em;\n      font-weight: 600;\n    \">{{ subtitle }}</div>\n    {% endif %}\n\n    {% if port %}\n    <div style=\"\n      margin-top: 8px;\n      font-size: {{ portSize or 11 }}px;\n      color: {{ portColor or '#8b5cf6' }};\n      font-family: monospace;\n      font-weight: 700;\n      background: {{ portBg or '#ede9fe' }};\n      padding: 2px 8px;\n      border-radius: 10px;\n      display: inline-block;\n    \">:{{ port }}</div>\n    {% endif %}\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtitle",
+        "type": "text"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon"
+      },
+      {
+        "name": "port",
+        "label": "Port",
+        "type": "text",
+        "description": "Service port number"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "min": 120,
+        "max": 250
+      },
+      {
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "borderWidth",
+        "label": "Border Width",
+        "type": "number",
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "borderRadius",
+        "label": "Border Radius",
+        "type": "number",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Size",
+        "type": "number",
+        "min": 10,
+        "max": 24
+      },
+      {
+        "name": "subtitleColor",
+        "label": "Subtitle Color",
+        "type": "color"
+      },
+      {
+        "name": "subtitleSize",
+        "label": "Subtitle Size",
+        "type": "number",
+        "min": 8,
+        "max": 18
+      },
+      {
+        "name": "portColor",
+        "label": "Port Color",
+        "type": "color"
+      },
+      {
+        "name": "portSize",
+        "label": "Port Size",
+        "type": "number",
+        "min": 8,
+        "max": 14
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "service",
+      "microservice",
+      "backend"
+    ]
+  }
+}

@@ -1,0 +1,697 @@
+/**
+ * Default Templates Library
+ *
+ * Built-in templates that ship with the platform.
+ * These are automatically seeded into IndexedDB on first load.
+ */
+
+import type { Template, TemplateCategory, BuiltInTemplate } from '@/types';
+
+/**
+ * Default template definitions
+ */
+export const DEFAULT_TEMPLATES: BuiltInTemplate[] = [
+  // Infrastructure Templates
+  {
+    id: 'template-database-postgres',
+    name: 'PostgreSQL Database',
+    category: 'database',
+    template: {
+      name: 'PostgreSQL Database',
+      description: 'Relational database server',
+      data: {
+        label: 'PostgreSQL',
+        icon: '🗄️',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 8px;">🗄️</div>
+            <div style="font-weight: 600; color: #1e40af;">PostgreSQL</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Database</div>
+          </div>
+        `,
+        description: 'Relational database',
+      },
+      style: {
+        backgroundColor: '#dbeafe',
+        borderColor: '#3b82f6',
+        borderWidth: 2,
+        borderRadius: 8,
+        minWidth: 140,
+        minHeight: 100,
+      },
+      className: 'template-database',
+      isPublic: true,
+      tags: ['database', 'sql', 'relational'],
+    },
+  },
+  {
+    id: 'template-database-mongodb',
+    name: 'MongoDB Database',
+    category: 'database',
+    template: {
+      name: 'MongoDB Database',
+      description: 'NoSQL document database',
+      data: {
+        label: 'MongoDB',
+        icon: '🍃',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 8px;">🍃</div>
+            <div style="font-weight: 600; color: #059669;">MongoDB</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">NoSQL Database</div>
+          </div>
+        `,
+        description: 'Document database',
+      },
+      style: {
+        backgroundColor: '#d1fae5',
+        borderColor: '#10b981',
+        borderWidth: 2,
+        borderRadius: 8,
+        minWidth: 140,
+        minHeight: 100,
+      },
+      className: 'template-database-nosql',
+      isPublic: true,
+      tags: ['database', 'nosql', 'document'],
+    },
+  },
+
+  // Service Templates
+  {
+    id: 'template-service-rest',
+    name: 'REST API',
+    category: 'service',
+    template: {
+      name: 'REST API',
+      description: 'RESTful API service',
+      data: {
+        label: 'REST API',
+        icon: '🔌',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">🔌</div>
+            <div style="font-weight: 600; color: #166534;">REST API</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">/api/v1</div>
+          </div>
+        `,
+        description: 'RESTful service',
+      },
+      style: {
+        backgroundColor: '#dcfce7',
+        borderColor: '#22c55e',
+        borderWidth: 2,
+        borderRadius: 12,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-api',
+      isPublic: true,
+      tags: ['api', 'rest', 'service'],
+    },
+  },
+  {
+    id: 'template-service-microservice',
+    name: 'Microservice',
+    category: 'service',
+    template: {
+      name: 'Microservice',
+      description: 'Microservice component',
+      data: {
+        label: 'Service',
+        icon: '⚙️',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">⚙️</div>
+            <div style="font-weight: 600; color: #7c3aed;">Service</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Microservice</div>
+          </div>
+        `,
+        description: 'Business service',
+      },
+      style: {
+        backgroundColor: '#ede9fe',
+        borderColor: '#8b5cf6',
+        borderWidth: 2,
+        borderRadius: 12,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-service',
+      isPublic: true,
+      tags: ['service', 'microservice', 'backend'],
+    },
+  },
+
+  // Infrastructure Templates
+  {
+    id: 'template-queue',
+    name: 'Message Queue',
+    category: 'infrastructure',
+    template: {
+      name: 'Message Queue',
+      description: 'Message queue for async processing',
+      data: {
+        label: 'Queue',
+        icon: '📬',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">📬</div>
+            <div style="font-weight: 600; color: #ea580c;">Queue</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Message Queue</div>
+          </div>
+        `,
+        description: 'Message broker',
+      },
+      style: {
+        backgroundColor: '#ffedd5',
+        borderColor: '#f97316',
+        borderWidth: 2,
+        borderRadius: 8,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-queue',
+      isPublic: true,
+      tags: ['queue', 'messaging', 'async'],
+    },
+  },
+  {
+    id: 'template-cache',
+    name: 'Cache',
+    category: 'infrastructure',
+    template: {
+      name: 'Cache',
+      description: 'In-memory cache layer',
+      data: {
+        label: 'Cache',
+        icon: '⚡',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">⚡</div>
+            <div style="font-weight: 600; color: #ca8a04;">Cache</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Redis/Memcached</div>
+          </div>
+        `,
+        description: 'Caching layer',
+      },
+      style: {
+        backgroundColor: '#fef9c3',
+        borderColor: '#eab308',
+        borderWidth: 2,
+        borderRadius: 8,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-cache',
+      isPublic: true,
+      tags: ['cache', 'redis', 'performance'],
+    },
+  },
+  {
+    id: 'template-storage',
+    name: 'Object Storage',
+    category: 'infrastructure',
+    template: {
+      name: 'Object Storage',
+      description: 'Object storage (S3, Blob)',
+      data: {
+        label: 'Storage',
+        icon: '📦',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">📦</div>
+            <div style="font-weight: 600; color: #0891b2;">Storage</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">S3 / Blob</div>
+          </div>
+        `,
+        description: 'Object storage',
+      },
+      style: {
+        backgroundColor: '#cffafe',
+        borderColor: '#06b6d4',
+        borderWidth: 2,
+        borderRadius: 8,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-storage',
+      isPublic: true,
+      tags: ['storage', 's3', 'blob'],
+    },
+  },
+
+  // External System Templates
+  {
+    id: 'template-external-api',
+    name: 'External API',
+    category: 'external',
+    template: {
+      name: 'External API',
+      description: 'Third-party API service',
+      data: {
+        label: 'External API',
+        icon: '🌐',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">🌐</div>
+            <div style="font-weight: 600; color: #4b5563;">External API</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Third-party</div>
+          </div>
+        `,
+        description: 'External service',
+      },
+      style: {
+        backgroundColor: '#f3f4f6',
+        borderColor: '#9ca3af',
+        borderWidth: 2,
+        borderStyle: 'dashed',
+        borderRadius: 8,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-external',
+      isPublic: true,
+      tags: ['external', 'api', 'third-party'],
+    },
+  },
+  {
+    id: 'template-external-system',
+    name: 'External System',
+    category: 'external',
+    template: {
+      name: 'External System',
+      description: 'External system or service',
+      data: {
+        label: 'External',
+        icon: '🔗',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">🔗</div>
+            <div style="font-weight: 600; color: #4b5563;">External System</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Third-party</div>
+          </div>
+        `,
+        description: 'External system',
+      },
+      style: {
+        backgroundColor: '#f3f4f6',
+        borderColor: '#9ca3af',
+        borderWidth: 2,
+        borderStyle: 'dashed',
+        borderRadius: 8,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-external-system',
+      isPublic: true,
+      tags: ['external', 'system', 'third-party'],
+    },
+  },
+
+  // Component Templates
+  {
+    id: 'template-component-ui',
+    name: 'UI Component',
+    category: 'component',
+    template: {
+      name: 'UI Component',
+      description: 'Frontend UI component',
+      data: {
+        label: 'Component',
+        icon: '🎨',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">🎨</div>
+            <div style="font-weight: 600; color: #be185d;">Component</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">UI Module</div>
+          </div>
+        `,
+        description: 'UI component',
+      },
+      style: {
+        backgroundColor: '#fce7f3',
+        borderColor: '#ec4899',
+        borderWidth: 2,
+        borderRadius: 12,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-component',
+      isPublic: true,
+      tags: ['component', 'ui', 'frontend'],
+    },
+  },
+  {
+    id: 'template-component-library',
+    name: 'Component Library',
+    category: 'component',
+    template: {
+      name: 'Component Library',
+      description: 'Reusable component library',
+      data: {
+        label: 'Lib',
+        icon: '📚',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">📚</div>
+            <div style="font-weight: 600; color: #be185d;">Component Library</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Reusable</div>
+          </div>
+        `,
+        description: 'Component library',
+      },
+      style: {
+        backgroundColor: '#fce7f3',
+        borderColor: '#ec4899',
+        borderWidth: 2,
+        borderRadius: 12,
+        minWidth: 140,
+        minHeight: 90,
+      },
+      className: 'template-component-lib',
+      isPublic: true,
+      tags: ['component', 'library', 'ui'],
+    },
+  },
+
+  // Container Templates
+  {
+    id: 'template-container-webapp',
+    name: 'Web Application',
+    category: 'container',
+    template: {
+      name: 'Web Application',
+      description: 'Web application container',
+      data: {
+        label: 'Web App',
+        icon: '🌍',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">🌍</div>
+            <div style="font-weight: 600; color: #0369a1;">Web App</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">SPA / MPA</div>
+          </div>
+        `,
+        description: 'Web application',
+      },
+      style: {
+        backgroundColor: '#e0f2fe',
+        borderColor: '#0ea5e9',
+        borderWidth: 2,
+        borderRadius: 12,
+        minWidth: 160,
+        minHeight: 100,
+      },
+      className: 'template-webapp',
+      isPublic: true,
+      tags: ['container', 'web', 'application'],
+    },
+  },
+  {
+    id: 'template-container-mobile',
+    name: 'Mobile App',
+    category: 'container',
+    template: {
+      name: 'Mobile App',
+      description: 'Mobile application',
+      data: {
+        label: 'Mobile',
+        icon: '📱',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px;">📱</div>
+            <div style="font-weight: 600; color: #0369a1;">Mobile App</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">iOS / Android</div>
+          </div>
+        `,
+        description: 'Mobile application',
+      },
+      style: {
+        backgroundColor: '#e0f2fe',
+        borderColor: '#0ea5e9',
+        borderWidth: 2,
+        borderRadius: 12,
+        minWidth: 140,
+        minHeight: 100,
+      },
+      className: 'template-mobile',
+      isPublic: true,
+      tags: ['container', 'mobile', 'app'],
+    },
+  },
+
+  // User Templates (C4)
+  {
+    id: 'template-user',
+    name: 'User',
+    category: 'external',
+    template: {
+      name: 'User',
+      description: 'Human user or actor',
+      data: {
+        label: 'User',
+        icon: '👤',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 8px;">👤</div>
+            <div style="font-weight: 600; color: #374151;">User</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Person</div>
+          </div>
+        `,
+        description: 'Human user',
+      },
+      style: {
+        backgroundColor: '#ffffff',
+        borderColor: '#9ca3af',
+        borderWidth: 2,
+        borderRadius: 20,
+        minWidth: 120,
+        minHeight: 100,
+      },
+      className: 'template-user',
+      isPublic: true,
+      tags: ['user', 'person', 'actor'],
+    },
+  },
+  {
+    id: 'template-admin',
+    name: 'Administrator',
+    category: 'external',
+    template: {
+      name: 'Administrator',
+      description: 'System administrator',
+      data: {
+        label: 'Admin',
+        icon: '👨‍💼',
+        htmlContent: `
+          <div style="text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 8px;">👨‍💼</div>
+            <div style="font-weight: 600; color: #374151;">Admin</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Administrator</div>
+          </div>
+        `,
+        description: 'System admin',
+      },
+      style: {
+        backgroundColor: '#ffffff',
+        borderColor: '#9ca3af',
+        borderWidth: 2,
+        borderRadius: 20,
+        minWidth: 120,
+        minHeight: 100,
+      },
+      className: 'template-admin',
+      isPublic: true,
+      tags: ['user', 'admin', 'person'],
+    },
+  },
+
+  // SAMPLE TEMPLATE WITH VARIABLES (Template-First Approach)
+  {
+    id: 'sample-template-red-glow-db',
+    name: 'Database (Red Glow)',
+    category: 'database' as TemplateCategory,
+    template: {
+      name: 'Database (Red Glow)',
+      description: 'Cyber-styled database node with customizable glowing effects',
+      data: {
+        label: 'PostgreSQL',
+      },
+      jinjaTemplate: `
+<div style="
+  text-align: center;
+  padding: 18px;
+  width: {{ width or 170 }}px;
+  border-radius: 14px;
+  background: {{ background or '#000000' }};
+  border: 1px solid {{ borderColor or '#7f1d1d' }};
+  box-shadow:
+    0 0 12px rgba({{ shadowColor or '239, 68, 68' }}, 0.8),
+    0 0 28px rgba({{ shadowColor or '239, 68, 68' }}, 0.6),
+    0 0 60px rgba({{ shadowColor or '239, 68, 68' }}, 0.4);
+">
+  <div style="font-size: {{ iconSize or 36 }}px; margin-bottom: 10px; filter: drop-shadow(0 0 6px rgba({{ shadowColor or '239, 68, 68' }}, 0.9));">
+    {{ icon or '🗄️' }}
+  </div>
+  <div style="
+    font-weight: 700;
+    font-size: {{ labelSize or 16 }}px;
+    color: {{ labelColor or '#f87171' }};
+    text-shadow:
+      0 0 6px rgba({{ shadowColor or '239, 68, 68' }}, 0.9),
+      0 0 14px rgba({{ shadowColor or '239, 68, 68' }}, 0.7);
+  ">
+    {{ label }}
+  </div>
+  <div style="
+    margin-top: 6px;
+    font-size: {{ subtitleSize or 11 }}px;
+    color: {{ subtitleColor or '#fecaca' }};
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba({{ shadowColor or '239, 68, 68' }}, 0.8);
+  ">
+    {{ subtitle or 'Database' }}
+  </div>
+</div>
+      `.trim(),
+      variables: [
+        {
+          name: 'label',
+          label: 'Label',
+          type: 'text' as const,
+          description: 'Database name',
+          defaultValue: 'PostgreSQL',
+          required: true
+        },
+        {
+          name: 'subtitle',
+          label: 'Subtitle',
+          type: 'text' as const,
+          description: 'Type text (e.g., "Database", "Cache")',
+          defaultValue: 'Database'
+        },
+        {
+          name: 'icon',
+          label: 'Icon',
+          type: 'icon' as const,
+          description: 'Emoji or icon',
+          defaultValue: '🗄️'
+        },
+        {
+          name: 'width',
+          label: 'Width',
+          type: 'number' as const,
+          description: 'Box width in pixels',
+          defaultValue: 170,
+          min: 100,
+          max: 300
+        },
+        {
+          name: 'background',
+          label: 'Background Color',
+          type: 'color' as const,
+          defaultValue: '#000000'
+        },
+        {
+          name: 'borderColor',
+          label: 'Border Color',
+          type: 'color' as const,
+          defaultValue: '#7f1d1d'
+        },
+        {
+          name: 'shadowColor',
+          label: 'Shadow Color (RGB)',
+          type: 'text' as const,
+          description: 'RGB values (e.g., "239, 68, 68")',
+          defaultValue: '239, 68, 68'
+        },
+        {
+          name: 'labelColor',
+          label: 'Label Color',
+          type: 'color' as const,
+          defaultValue: '#f87171'
+        },
+        {
+          name: 'labelSize',
+          label: 'Label Font Size',
+          type: 'number' as const,
+          defaultValue: 16,
+          min: 10,
+          max: 32
+        },
+        {
+          name: 'subtitleColor',
+          label: 'Subtitle Color',
+          type: 'color' as const,
+          defaultValue: '#fecaca'
+        },
+        {
+          name: 'subtitleSize',
+          label: 'Subtitle Font Size',
+          type: 'number' as const,
+          defaultValue: 11,
+          min: 8,
+          max: 20
+        },
+        {
+          name: 'iconSize',
+          label: 'Icon Size',
+          type: 'number' as const,
+          defaultValue: 36,
+          min: 20,
+          max: 64
+        }
+      ],
+      defaultValues: {
+        label: 'PostgreSQL',
+        subtitle: 'Database',
+        icon: '🗄️',
+        width: 170,
+        background: '#000000',
+        borderColor: '#7f1d1d',
+        shadowColor: '239, 68, 68',
+        labelColor: '#f87171',
+        labelSize: 16,
+        subtitleColor: '#fecaca',
+        subtitleSize: 11,
+        iconSize: 36
+      },
+      style: {},
+      isPublic: true,
+      tags: ['sample', 'database', 'cyber', 'glow'],
+    },
+  },
+];
+
+/**
+ * Convert built-in template to full Template with timestamps
+ */
+export function createTemplateFromBuiltIn(
+  builtIn: BuiltInTemplate,
+  author: string = 'System'
+): Template {
+  const now = new Date().toISOString();
+
+  return {
+    id: builtIn.id,
+    name: builtIn.name,
+    category: builtIn.category,
+    author,
+    ...builtIn.template,
+    createdAt: now,
+    updatedAt: now,
+  };
+}
+
+/**
+ * Seed default templates to storage
+ */
+export async function seedDefaultTemplates(): Promise<Template[]> {
+  const templates = DEFAULT_TEMPLATES.map((t) =>
+    createTemplateFromBuiltIn(t, 'System')
+  );
+
+  return templates;
+}

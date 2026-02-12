@@ -1,0 +1,97 @@
+{
+  "id": "sample-template-red-glow-db",
+  "name": "Database (Red Glow)",
+  "category": "sample",
+  "template": {
+    "name": "Database (Red Glow)",
+    "description": "Cyber-styled database node with customizable glowing effects",
+    "data": {
+      "label": "PostgreSQL"
+    },
+    "jinjaTemplate": "<div style=\"\n  text-align: center;\n  padding: 18px;\n  width: {{ width or 170 }}px;\n  border-radius: 14px;\n  background: {{ background or '#000000' }};\n  border: 1px solid {{ borderColor or '#7f1d1d' }};\n  box-shadow:\n    0 0 12px rgba({{ shadowColor or '239, 68, 68' }}, 0.8),\n    0 0 28px rgba({{ shadowColor or '239, 68, 68' }}, 0.6),\n    0 0 60px rgba({{ shadowColor or '239, 68, 68' }}, 0.4);\n\">\n  <div style=\"font-size: {{ iconSize or 36 }}px; margin-bottom: 10px; filter: drop-shadow(0 0 6px rgba({{ shadowColor or '239, 68, 68' }}, 0.9));\">\n    {{ icon or '🗄️' }}\n  </div>\n  <div style=\"\n    font-weight: 700;\n    font-size: {{ labelSize or 16 }}px;\n    color: {{ labelColor or '#f87171' }};\n    text-shadow:\n      0 0 6px rgba({{ shadowColor or '239, 68, 68' }}, 0.9),\n      0 0 14px rgba({{ shadowColor or '239, 68, 68' }}, 0.7);\n  \">\n    {{ label }}\n  </div>\n  <div style=\"\n    margin-top: 6px;\n    font-size: {{ subtitleSize or 11 }}px;\n    color: {{ subtitleColor or '#fecaca' }};\n    letter-spacing: 0.1em;\n    text-transform: uppercase;\n    text-shadow: 0 0 8px rgba({{ shadowColor or '239, 68, 68' }}, 0.8);\n  \">\n    {{ subtitle or 'Database' }}\n  </div>\n</div>",
+    "variables": [
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "description": "Database name",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtitle",
+        "type": "text",
+        "description": "Type text (e.g., \"Database\", \"Cache\")"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "icon",
+        "description": "Emoji or icon"
+      },
+      {
+        "name": "width",
+        "label": "Width",
+        "type": "number",
+        "description": "Box width in pixels",
+        "min": 100,
+        "max": 300
+      },
+      {
+        "name": "background",
+        "label": "Background Color",
+        "type": "color"
+      },
+      {
+        "name": "borderColor",
+        "label": "Border Color",
+        "type": "color"
+      },
+      {
+        "name": "shadowColor",
+        "label": "Shadow Color (RGB)",
+        "type": "text",
+        "description": "RGB values (e.g., \"239, 68, 68\")"
+      },
+      {
+        "name": "labelColor",
+        "label": "Label Color",
+        "type": "color"
+      },
+      {
+        "name": "labelSize",
+        "label": "Label Font Size",
+        "type": "number",
+        "min": 10,
+        "max": 32
+      },
+      {
+        "name": "subtitleColor",
+        "label": "Subtitle Color",
+        "type": "color"
+      },
+      {
+        "name": "subtitleSize",
+        "label": "Subtitle Font Size",
+        "type": "number",
+        "min": 8,
+        "max": 20
+      },
+      {
+        "name": "iconSize",
+        "label": "Icon Size",
+        "type": "number",
+        "min": 20,
+        "max": 64
+      }
+    ],
+    "style": {},
+    "isPublic": true,
+    "tags": [
+      "sample",
+      "database",
+      "cyber",
+      "glow"
+    ]
+  }
+}

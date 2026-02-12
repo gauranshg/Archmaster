@@ -1,0 +1,21 @@
+# Do not include azure-functions-worker in this file
+# The Python Worker is managed by the Azure Functions platform
+# Manually managing azure-functions-worker may cause unexpected issues
+
+# Azure Functions and Services
+azure-functions
+azure-identity
+azure-keyvault-secrets
+azure-cosmos
+azure-storage-blob
+
+# Database (optional - not needed for diagram platform)
+# pyodbc
+
+# Data Validation
+pydantic==2.5.0
+python-multipart==0.0.6
+
+# Utilities
+requests
+python-dotenv
